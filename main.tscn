@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgqbsufvdkygc"]
+
+[ext_resource type="Texture2D" uid="uid://b4mfrky02ui3x" path="res://Images/pasto.jpg" id="1_mowuv"]
+[ext_resource type="PackedScene" uid="uid://mt438blt7tfs" path="res://player.tscn" id="2_gabd4"]
+[ext_resource type="PackedScene" uid="uid://bc7m35abuqjqg" path="res://enemy_spawner_camera.tscn" id="3_yj2w1"]
+[ext_resource type="PackedScene" uid="uid://oea7dnuhcmj0" path="res://health_bar.tscn" id="5_eevfk"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -27461.0
+offset_top = -23615.0
+offset_right = 28740.0
+offset_bottom = 23308.0
+texture = ExtResource("1_mowuv")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_gabd4")]
+position = Vector2(448, -2000)
+speed = 2500
+health_bar_path = NodePath("../Hub/MarginContainer/HealthBar")
+
+[node name="EnemySpawnerCamera" parent="Player" instance=ExtResource("3_yj2w1")]
+
+[node name="Hub" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Hub"]
+custom_minimum_size = Vector2(20, 20)
+layout_direction = 2
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" parent="Hub/MarginContainer" instance=ExtResource("5_eevfk")]
+layout_mode = 2

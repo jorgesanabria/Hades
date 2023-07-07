@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bc7m35abuqjqg"]
+
+[node name="EnemySpawnerCamera" type="Camera2D"]
+zoom = Vector2(0.2, 0.2)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="SpawnerTimer" type="Timer" parent="."]
+autostart = true

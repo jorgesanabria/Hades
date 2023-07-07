@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb50ya6pk8epa"]
+
+[ext_resource type="Texture2D" uid="uid://nybefv6qn3eb" path="res://Images/ataque2.png" id="1_6rrsl"]
+[ext_resource type="Script" path="res://player_bullet.gd" id="1_10tst"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j21fu"]
+
+[node name="PlayerBullet" type="Area2D" groups=["player_bullets"]]
+script = ExtResource("1_10tst")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_j21fu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_6rrsl")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

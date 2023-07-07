@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfal2qeiijhqv"]
+
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="1_7p1nb"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_kb2we"]
+[ext_resource type="Script" path="res://Weapon.gd" id="3_gt5q5"]
+[ext_resource type="PackedScene" uid="uid://t2ug0wqthv3d" path="res://enemy_health_bar.tscn" id="4_n4fef"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvppj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs27e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fnqmq"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_kb2we")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.386, 0.386)
+texture = ExtResource("1_7p1nb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(60, 60)
+shape = SubResource("CircleShape2D_kvppj")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+scale = Vector2(1200, 1200)
+shape = SubResource("CircleShape2D_rs27e")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-1000, -1000, 2000, 2000)
+
+[node name="Weapon" type="Marker2D" parent="."]
+script = ExtResource("3_gt5q5")
+
+[node name="TopRight" type="Marker2D" parent="Weapon"]
+position = Vector2(338, -347)
+
+[node name="TopLeft" type="Marker2D" parent="Weapon"]
+position = Vector2(-171, -133)
+
+[node name="BottonRight" type="Marker2D" parent="Weapon"]
+position = Vector2(233, 128)
+
+[node name="BottonLeft" type="Marker2D" parent="Weapon"]
+position = Vector2(-314, 333)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DamageZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone"]
+scale = Vector2(40, 40)
+shape = SubResource("CircleShape2D_fnqmq")
+
+[node name="EnemyHealthBar" parent="." instance=ExtResource("4_n4fef")]
+offset_left = -166.0
+offset_top = -618.0
+offset_right = 206.0
+offset_bottom = -541.0
+
+[node name="OnDamageTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
+[connection signal="area_exited" from="PlayerDetector" to="." method="_on_player_detector_area_exited"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="DamageZone" to="." method="_on_damage_zone_area_entered"]
+[connection signal="timeout" from="OnDamageTimer" to="." method="_on_on_damage_timer_timeout"]

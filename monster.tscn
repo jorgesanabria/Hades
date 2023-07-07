@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bid5qfmawemf2"]
+
+[ext_resource type="Script" path="res://monster.gd" id="1_avypl"]
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="1_l0a15"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akc5x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dj6m5"]
+
+[node name="Monster" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_avypl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.358, 0.358)
+texture = ExtResource("1_l0a15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+scale = Vector2(35, 35)
+shape = SubResource("CircleShape2D_akc5x")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+scale = Vector2(300, 300)
+shape = SubResource("CircleShape2D_dj6m5")
+
+[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
+[connection signal="area_exited" from="PlayerDetector" to="." method="_on_player_detector_area_exited"]
