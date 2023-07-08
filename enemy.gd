@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed = 1500
 
 var ghost_scene = preload("res://ghost.tscn")
+var energy_scene = preload("res://energy.tscn")
 
 var points = []
 var tarjet: Node2D = null
@@ -101,16 +102,17 @@ func _on_damage_zone_area_entered(area):
 			var manager = get_node("/root/GameManager")
 			if manager.ghost_count < manager.MAX_GHOST_COUNT:
 				manager.ghost_count += 1
-				var ghost_intance = ghost_scene.instantiate()
-				ghost_intance.transform = get_global_transform()
-				ghost_intance.position = self.position
-				get_parent().add_child(ghost_intance)
-				print(manager.ghost_count)
-				print(manager.MAX_GHOST_COUNT)
-				print(manager.ghost_count <= manager.MAX_GHOST_COUNT)
-			
-			manager.enemy_count -= 1
-			manager.enemies_elimitated += 1
+				#var ghost_intance = ghost_scene.instantiate()
+				#ghost_intance.transform = get_global_transform()
+				#ghost_intance.position = self.position
+				#get_parent().add_child(ghost_intance)
+				var energy_instance = energy_scene.instantiate()
+				energy_instance.transform = get_global_transform()
+				energy_instance.position = self.position
+				get_parent().add_child(energy_instance)
+			#manager.enemy_count -= 1
+			#manager.enemies_elimitated += 1
+			manager.add_killed_enemy()
 			queue_free()
 
 

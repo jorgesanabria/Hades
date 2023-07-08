@@ -61,8 +61,13 @@ func _on_damage_timer_timeout():
 
 
 func _on_enemy_spawner_timer_timeout():
-	$Spawner.spawn_enemy(get_parent())
-	calculateAndStartGenerationTimer()
+	var manager = get_node("/root/GameManager")
+	if manager.is_max_killed_enemies():
+		manager.start()
+	else:
+		$Spawner.spawn_range(get_parent())
+	#calculateAndStartGenerationTimer()
+	$EnemySpawnerTimer.start()
 
 func calculateGenerationSpeed() -> float:
 	var averageEnemiesEliminated: int = 12

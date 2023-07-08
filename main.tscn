@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgqbsufvdkygc"]
+[gd_scene load_steps=6 format=3 uid="uid://bgqbsufvdkygc"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_3ov6i"]
 [ext_resource type="Texture2D" uid="uid://b4mfrky02ui3x" path="res://Images/pasto.jpg" id="1_mowuv"]
 [ext_resource type="PackedScene" uid="uid://mt438blt7tfs" path="res://player.tscn" id="2_gabd4"]
 [ext_resource type="PackedScene" uid="uid://bc7m35abuqjqg" path="res://enemy_spawner_camera.tscn" id="3_yj2w1"]
 [ext_resource type="PackedScene" uid="uid://oea7dnuhcmj0" path="res://health_bar.tscn" id="5_eevfk"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3ov6i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -27461.0
