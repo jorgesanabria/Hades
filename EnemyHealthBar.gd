@@ -2,7 +2,7 @@ extends TextureProgressBar
 
 func set_damage():
 	self.visible = true
-	self.value -= 10
+	self.value -= 100
 	$Timer.start()
 
 

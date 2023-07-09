@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://v1v0ayx5a5mw"]
+
+[ext_resource type="Texture2D" uid="uid://nybefv6qn3eb" path="res://Images/ataque2.png" id="1_oo2ho"]
+
+[node name="Mardcador" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_oo2ho")

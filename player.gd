@@ -53,7 +53,7 @@ func take_damage():
 	$Sprite2D.modulate = Color.RED
 	$DamageTimer.start()
 	if health_bar_path != null and has_node(health_bar_path):
-		get_node(health_bar_path).value -= 10
+		get_node(health_bar_path).value -= 5
 
 
 func _on_damage_timer_timeout():

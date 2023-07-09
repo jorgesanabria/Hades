@@ -54,28 +54,28 @@ shape = SubResource("CircleShape2D_80a5s")
 script = ExtResource("4_xk6j2")
 
 [node name="Top" type="Marker2D" parent="Spawner"]
-position = Vector2(0, -4839)
+position = Vector2(0, -3617)
 
 [node name="TopRight" type="Marker2D" parent="Spawner"]
-position = Vector2(6604, -4522)
+position = Vector2(5975, -3121)
 
 [node name="Right" type="Marker2D" parent="Spawner"]
-position = Vector2(6858, 458)
+position = Vector2(5403, 548)
 
 [node name="BottonRight" type="Marker2D" parent="Spawner"]
-position = Vector2(6958, 4927)
+position = Vector2(5359, 3849)
 
 [node name="Botton" type="Marker2D" parent="Spawner"]
-position = Vector2(50, 5333)
+position = Vector2(-148, 4093)
 
 [node name="BottonLeft" type="Marker2D" parent="Spawner"]
-position = Vector2(-6300, 5257)
+position = Vector2(-5060, 3568)
 
 [node name="Left" type="Marker2D" parent="Spawner"]
-position = Vector2(-6782, 26)
+position = Vector2(-5542, 26)
 
 [node name="TopLeft" type="Marker2D" parent="Spawner"]
-position = Vector2(-6985, -4622)
+position = Vector2(-4883, -3293)
 
 [node name="EnemySpawnerTimer" type="Timer" parent="."]
 wait_time = 3.0

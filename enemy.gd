@@ -100,16 +100,11 @@ func _on_damage_zone_area_entered(area):
 		$Sprite2D.modulate = Color.RED
 		if $EnemyHealthBar.value <= 0:
 			var manager = get_node("/root/GameManager")
-			if manager.ghost_count < manager.MAX_GHOST_COUNT:
-				manager.ghost_count += 1
-				#var ghost_intance = ghost_scene.instantiate()
-				#ghost_intance.transform = get_global_transform()
-				#ghost_intance.position = self.position
-				#get_parent().add_child(ghost_intance)
-				var energy_instance = energy_scene.instantiate()
-				energy_instance.transform = get_global_transform()
-				energy_instance.position = self.position
-				get_parent().add_child(energy_instance)
+			var energy_instance = energy_scene.instantiate()
+			energy_instance.transform = get_global_transform()
+			energy_instance.position = self.position
+			get_parent().add_child(energy_instance)
+				
 			#manager.enemy_count -= 1
 			#manager.enemies_elimitated += 1
 			manager.add_killed_enemy()

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://jgmiagfa2mo"]
+
+[ext_resource type="Script" path="res://DrawMany.gd" id="1_nffdr"]
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="2_6hbfl"]
+
+[node name="DrawMany" type="Node2D"]
+script = ExtResource("1_nffdr")
+texture = ExtResource("2_6hbfl")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(953, 526)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(780, 219)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(343, 80)
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(181, 526)
+
+[node name="Timer" type="Timer" parent="." groups=["timer"]]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

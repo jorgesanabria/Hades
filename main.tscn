@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgqbsufvdkygc"]
+[gd_scene load_steps=9 format=3 uid="uid://bgqbsufvdkygc"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3ov6i"]
 [ext_resource type="Texture2D" uid="uid://b4mfrky02ui3x" path="res://Images/pasto.jpg" id="1_mowuv"]
 [ext_resource type="PackedScene" uid="uid://mt438blt7tfs" path="res://player.tscn" id="2_gabd4"]
 [ext_resource type="PackedScene" uid="uid://bc7m35abuqjqg" path="res://enemy_spawner_camera.tscn" id="3_yj2w1"]
 [ext_resource type="PackedScene" uid="uid://oea7dnuhcmj0" path="res://health_bar.tscn" id="5_eevfk"]
+[ext_resource type="Script" path="res://CurrentEnergyLabel.gd" id="6_4ls2q"]
+[ext_resource type="Script" path="res://Ronda.gd" id="7_65kv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_igcj5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3ov6i")
@@ -20,7 +24,7 @@ stretch_mode = 1
 [node name="Player" parent="." instance=ExtResource("2_gabd4")]
 position = Vector2(448, -2000)
 speed = 2500
-health_bar_path = NodePath("../Hub/MarginContainer/HealthBar")
+health_bar_path = NodePath("../Hub/MarginContainer/HBoxContainer/HealthBar")
 
 [node name="EnemySpawnerCamera" parent="Player" instance=ExtResource("3_yj2w1")]
 
@@ -32,5 +36,55 @@ layout_direction = 2
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HealthBar" parent="Hub/MarginContainer" instance=ExtResource("5_eevfk")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Hub/MarginContainer"]
 layout_mode = 2
+
+[node name="HealthBar" parent="Hub/MarginContainer/HBoxContainer" instance=ExtResource("5_eevfk")]
+layout_mode = 2
+
+[node name="CurrentEnergyText" type="Label" parent="Hub/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Energy"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CurrentEnergyLabel" type="Label" parent="Hub/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("6_4ls2q")
+
+[node name="Oleada" type="Label" parent="Hub/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Oleada: "
+
+[node name="Ronda" type="Label" parent="Hub/MarginContainer/HBoxContainer"]
+layout_mode = 2
+script = ExtResource("7_65kv8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -22660)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(3000, 40)
+shape = SubResource("RectangleShape2D_igcj5")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 21411)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+scale = Vector2(3000, 40)
+shape = SubResource("RectangleShape2D_igcj5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-25317, 79)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+scale = Vector2(40, 3000)
+shape = SubResource("RectangleShape2D_igcj5")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(26333, 79)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+scale = Vector2(40, 3000)
+shape = SubResource("RectangleShape2D_igcj5")
