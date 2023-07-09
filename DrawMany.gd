@@ -1,5 +1,7 @@
 extends Node2D
 
+#var t = preload("res://test_class.gd") as TestClass
+
 class EnemyData extends Resource:
 
 	var position: Vector2
@@ -24,7 +26,7 @@ class EnemyData extends Resource:
 			if current_tarjet_index < (positions.size() - 1):
 				current_tarjet_index += 1
 				tarjet = positions[current_tarjet_index]
-				print("menor que size")
+				#print("menor que size")
 			else:
 				tarjet = positions[0]
 				current_tarjet_index = 0
@@ -47,6 +49,8 @@ var max_objects = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var ins = TestClass.new("hola")
+	ins.print_foo()
 	for marker in get_children().filter(func(item): return !item.is_in_group("timer")):
 		positions.append(marker.position)
 	
@@ -59,9 +63,9 @@ func _process(delta):
 	var i = 0;
 	while i < enemies.size():
 		var j = i + 1
-		print("i: " + str(i))
+		#print("i: " + str(i))
 		while j < enemies.size():
-			print("j: " + str(j))
+			#print("j: " + str(j))
 			enemies[i].fix_distance(enemies[j])
 			j += 1
 		i += 1
