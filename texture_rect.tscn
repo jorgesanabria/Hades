@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://drbrrdba8nixy"]
+
+[ext_resource type="Texture2D" uid="uid://b4mfrky02ui3x" path="res://Images/pasto.jpg" id="1_1qigi"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_left = -19897.0
+offset_top = -12631.0
+offset_right = 21190.0
+offset_bottom = 12998.0
+texture = ExtResource("1_1qigi")
+stretch_mode = 1

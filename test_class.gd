@@ -1,5 +1,5 @@
 class_name TestClass
-extends Object
+extends Resource
 
 var foo: String
 

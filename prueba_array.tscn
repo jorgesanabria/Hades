@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://16djn614syqv"]
+
+[ext_resource type="Script" path="res://PruebaArray.gd" id="1_mcmup"]
+[ext_resource type="Texture2D" uid="uid://d307he6x8ygqs" path="res://Images/prota.jpg" id="2_mkhln"]
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="3_ksspg"]
+
+[node name="PruebaArray" type="Node2D"]
+script = ExtResource("1_mcmup")
+datos = Array[Sprite2D]([null])
+t = ExtResource("2_mkhln")
+
+[node name="Enemy" type="Sprite2D" parent="."]
+texture = ExtResource("3_ksspg")

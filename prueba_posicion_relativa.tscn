@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciwfyp5y70g3s"]
+
+[ext_resource type="Script" path="res://prueba_posicion_relativa.gd" id="1_ub1di"]
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="2_a5mlx"]
+[ext_resource type="Script" path="res://SingleTextureNodeProvider.gd" id="2_q0170"]
+
+[node name="PruebaPosicionRelativa" type="Node2D"]
+script = ExtResource("1_ub1di")
+
+[node name="Providers" type="Node" parent="."]
+
+[node name="Node" type="Node" parent="Providers"]
+script = ExtResource("2_q0170")
+texture = ExtResource("2_a5mlx")

@@ -75,7 +75,12 @@ func _draw():
 	#draw_texture(texture, Vector2(100, 100))
 	#draw_texture_rect(texture, Rect2(100, 100, 100, 100), false)
 	for enemy in enemies:
-		draw_texture_rect(texture, Rect2(enemy.position.x, enemy.position.y, 100, 100), false)
+		var rotation = 45  # Ángulo de rotación en grados
+
+	# Calcula la matriz de transformación para rotar la textura
+		draw_set_transform(enemy.position)
+		draw_texture_rect(texture, Rect2(0, 0, 100, 100), false)
+		draw_set_transform(Vector2.ZERO)
 
 func _on_timer_timeout():
 	var enemy = EnemyData.new(Vector2.ZERO, 200, positions, 50)

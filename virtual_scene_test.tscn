@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmkhu63yt7ul1"]
+
+[ext_resource type="PackedScene" uid="uid://drbrrdba8nixy" path="res://texture_rect.tscn" id="1_2v0lk"]
+[ext_resource type="Script" path="res://Scenes/VirtualScene_Test.gd" id="1_jani0"]
+[ext_resource type="Texture2D" uid="uid://bdtvryqjmyi0a" path="res://Images/prota.png" id="2_7xu21"]
+[ext_resource type="Texture2D" uid="uid://jjbq7g2djgl3" path="res://Images/monstruo.png" id="2_i5ewh"]
+[ext_resource type="Script" path="res://FakePlayer.gd" id="4_v5h6h"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" parent="." instance=ExtResource("1_2v0lk")]
+
+[node name="VirtualSceneTest" type="Node2D" parent="."]
+script = ExtResource("1_jani0")
+texture = ExtResource("2_i5ewh")
+
+[node name="FakePlayer" type="Sprite2D" parent="VirtualSceneTest"]
+position = Vector2(573, 357)
+scale = Vector2(0.1248, 0.1248)
+texture = ExtResource("2_7xu21")
+script = ExtResource("4_v5h6h")
+
+[node name="Camera2D" type="Camera2D" parent="VirtualSceneTest/FakePlayer"]
+zoom = Vector2(0.5, 0.5)
+limit_smoothed = true
